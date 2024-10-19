@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Our Home</title>
+</head>
+<body>
+    <header>
+            <button id="openNav" onmouseover="w3_open()"><h2>BEST SITE</h2></button>
+            <div class="nav">
+                <ul>
+                    <li>Contact Us</li>
+                    <li>Sign Up</li>
+                    <li>Login</li>
+                </ul>
+            </div>
+    </header>
+    <div class="content">
+        <div class="sidebar" id="mySidebar">
+            <div class="side-nav">
+                <ul>
+                    <li><button onclick="w3_close()"><i style=" border-radius: 20px; width: 100px; background-color: white; color: rgb(0, 0, 0); font-size: 30px;" class='bx bx-arrow-back'></i></button></li>
+                    <li>Profile</li>
+                    <li>Job</li>
+                    <li>Setting</li>
+                </ul>
+            </div>
+        </div>
+        <div id="main" class="main">
+            <h1>Welcome To My Absoloute Created Site by Me</h1>
+        </div>
+    </div>
+    <footer align="center">
+            <p>&copy Web 2024</p>
+    </footer>
+    <script>
+        function w3_open() {
+          document.getElementById("mySidebar").style.display = "block";
+          document.getElementsByClassName("sidebar").style.transition = "all 1s";
+        }     
+        function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        }
+        </script>
+</body>
+</html>
