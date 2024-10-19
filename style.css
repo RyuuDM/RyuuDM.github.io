@@ -64,6 +64,9 @@ header button :hover.sidebar{
     padding-top: 20px;
     padding-left: 30px;
 }
+.main h5{
+    margin-top: 168px;
+}
 footer{
     background-color: rgb(26, 37, 69);
     color: white;
@@ -79,8 +82,5 @@ footer{
         padding: 7px;
         font-size: 11px;
         border-radius: 15px;
-    }
-    .sidebar .side-nav button{
-        width: 70px;
     }
 }
