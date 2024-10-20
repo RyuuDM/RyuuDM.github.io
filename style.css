@@ -41,10 +41,11 @@ header  .sub{
     position: absolute;
     display: none;
 }
-header  .sub li{
+header .nav .sub li{
     background-color: brown;
     color: white;
     margin: 5px;
+    width: 80px;
 }
 .sidebar button{
     background-color: transparent;
