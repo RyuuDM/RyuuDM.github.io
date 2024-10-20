@@ -1,89 +1,151 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-    <title>Our Home</title>
-</head>
-<body>
-    <header>
-        <div class="title">
-            <button id="openNav"><i onclick="w3_open()" class='bx bx-menu'></i></button>
-            <button  id="closeNav" onclick="w3_close()"><i  class='bx bx-arrow-back'></i></button>
-            <h2>Human Trade</h2>
-        </div>
-            <div class="nav">
-                <ul>
-                    <li onclick="sub_nav_open()" onclick="sub_nav_close()" >Contact Us</li>
-                    <ul class="sub" id="sub" onmouseleave="sub_nav_close()">
-                        <li>+60-29893298</li>
-                        <li>+60-34442248</li>
-                        <li>+60-23535358</li>
-                    </ul>
-                    <li>Sign Up</li>
-                    <li>Login</li>
-                </ul>
-            </div>
-    </header>
-    <div class="content">
-        <div class="sidebar" id="mySidebar">
-            <div class="side-nav">
-                <ul>
-                    <li>Profile</li>
-                    <li>Job</li>
-                    <li>Setting</li>
-                </ul>
-            </div>
-        </div>
-        <div onclick="sub_nav_close()" id="main" class="main">
-            <h1>Choose What You Like</h1>
-            <div class="card">
-                <div align="center" class="human">
-                    <img class="image1" src="h1.jpeg">
-                    <h3>Amsyar</h3>
-                    <h4>RM 1870.00</h4>
-                    <button>Add to Cart</button>
-                </div>
-                <div align="center" class="human">
-                    <img class="image2" src="h2.jpeg">
-                    <h3>Reza</h3>
-                    <h4>RM 2070.00</h4>
-                    <button>Add to Cart</button>
-                </div>
-                <div align="center" class="human">
-                    <img class="image3" src="h3.jpeg">
-                    <h3>Faris</h3>
-                    <h4>RM 2970.00</h4>
-                    <button>Add to Cart</button>
-                </div>
-            </div>
-            <h5 align="center"><a href="https://youtu.be/Ct6BUPvE2sM?si=Jg21mq0yvWDbeOR5">CLICK HERE</a></h5>
-        </div>
-    </div>
-    <footer align="center">
-            <p>&copy Web 2024</p>
-    </footer>
-    <script>
-        function w3_open() {
-          document.getElementById("mySidebar").style.display = "block";
-          document.getElementById("closeNav").style.display = "block";
-          document.getElementById("openNav").style.display = "none";
-        }     
-        function w3_close() {
-        document.getElementById("mySidebar").style.display = "none";
-        document.getElementById("openNav").style.display = "block";
-        document.getElementById("closeNav").style.display = "none";
-        }
-
-        function sub_nav_open(){
-        document.getElementById("sub").style.display = "block";
-        }
-        function sub_nav_close(){
-            document.getElementById("sub").style.display = "none";
-        }
-        </script>
-</body>
-</html>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+header {
+    width: 100%;
+    padding: 16px;
+    background-color: rgb(235, 42, 61);
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header .title{
+    display: flex;
+    gap: 20px;
+}
+header .title i{
+    font-size: 27px;
+}
+header  ul{
+    display: flex;
+    list-style: none;
+    gap: 10px;
+}
+header .nav ul li{
+    background-color: white;
+    padding: 5px;
+    border-radius: 11px;
+    font-size: 12px;
+    text-align: center;
+}
+header button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+header  .sub{
+    display: block;
+    margin-top: 40px;
+    position: absolute;
+    display: none;
+}
+header .nav .sub li{
+    background-color: brown;
+    color: white;
+    margin: 5px;
+    width: 80px;
+}
+.sidebar button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.content{
+    display: flex;
+}
+.sidebar{
+    background-color: rgb(57, 78, 86);
+    color: white;
+    position: relative;
+    left: -200px;
+    height:86vh;
+    width: 200px;
+    transition: 0.5s ease-out;
+}
+.sidebar .side-nav ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 27px;
+    padding-top: 20px;
+}
+.sidebar .side-nav ul li{
+    text-decoration: underline 2px;
+}
+.main{
+    padding-top: 20px;
+    padding-left: 30px;
+    width: 100%;
+    position: relative;
+    left: -100px;
+    transition: 0.5s ease-out;
+}
+.main h5{
+    margin-top: 168px;
+}
+.main h5 a{
+    margin-top: 168px;
+    color: red  ;
+}
+.card{
+    margin-top: 40px;
+    display: flex;
+    gap: 30px;
+}
+.card button{
+    margin-top: 20px;
+    background-color: red;
+    border: none;
+    color: white;
+    border-radius: 12px;
+    padding: 10px;
+    cursor: pointer;
+}
+.image1{
+    width: 200px;
+}
+.image2{
+    width: 188px;
+}
+.image3{
+    width: 245px;
+}
+footer{
+    background-color: rgb(0, 0, 0);
+    color: white;
+    width: 100%;
+    height: 8vh;
+    padding-top: 10px;
+    position: fixed;
+    bottom: 0;
+}
+#closeNav{
+    display: none;
+}
+@media (max-width:776px){
+    header .nav ul li{
+        background-color: white;
+        padding: 7px;
+        font-size: 9px;
+        border-radius: 15px;
+        width: 59px;
+    }
+    .sidebar{
+        height: 83vh;
+    }
+    .image1{
+        width: 50px;
+    }
+    .image2{
+        width: 45px;
+    }
+    .image3{
+        width: 60px;
+    }
+}
