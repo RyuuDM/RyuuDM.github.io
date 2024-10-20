@@ -10,10 +10,19 @@
 </head>
 <body>
     <header>
-            <button id="openNav" onmouseover="w3_open()"><h2>BEST SITE</h2></button>
+        <div class="title">
+            <button id="openNav"><i onclick="w3_open()" class='bx bx-menu'></i></button>
+            <button  id="closeNav" onclick="w3_close()"><i  class='bx bx-arrow-back'></i></button>
+            <h2>BEST SITE</h2>
+        </div>
             <div class="nav">
                 <ul>
-                    <li>Contact Us</li>
+                    <li><button  onmouseover="sub_nav_open()"" onclick="sub_nav_close()" >Contact Us</button></li>
+                    <ul class="sub" id="sub" onmouseleave="sub_nav_close()">
+                        <li>My Name</li>
+                        <li>My age</li>
+                        <li>My hobby</li>
+                    </ul>
                     <li>Sign Up</li>
                     <li>Login</li>
                 </ul>
@@ -23,7 +32,6 @@
         <div class="sidebar" id="mySidebar">
             <div class="side-nav">
                 <ul>
-                    <li><button onclick="w3_close()"><i style=" border-radius: 20px; width: 100px; background-color: white; color: rgb(0, 0, 0); font-size: 30px;" class='bx bx-arrow-back'></i></button></li>
                     <li>Profile</li>
                     <li>Job</li>
                     <li>Setting</li>
@@ -41,10 +49,20 @@
     <script>
         function w3_open() {
           document.getElementById("mySidebar").style.display = "block";
-          document.getElementsByClassName("sidebar").style.transition = "all 1s";
+          document.getElementById("closeNav").style.display = "block";
+          document.getElementById("openNav").style.display = "none";
         }     
         function w3_close() {
         document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("openNav").style.display = "block";
+        document.getElementById("closeNav").style.display = "none";
+        }
+
+        function sub_nav_open(){
+        document.getElementById("sub").style.display = "block";
+        }
+        function sub_nav_close(){
+            document.getElementById("sub").style.display = "none";
         }
         </script>
 </body>
