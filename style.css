@@ -136,6 +136,9 @@ footer{
         border-radius: 15px;
         width: 59px;
     }
+    .main button{
+        font-size: 7px;
+    }
     .sidebar{
         height: 83vh;
     }
