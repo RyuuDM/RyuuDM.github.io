@@ -14,6 +14,13 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+header .title{
+    display: flex;
+    gap: 20px;
+}
+header .title i{
+    font-size: 30px;
+}
 header  ul{
     display: flex;
     list-style: none;
@@ -28,6 +35,17 @@ header button{
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+header  .sub{
+    display: block;
+    margin-top: 40px;
+    position: absolute;
+    display: none;
+}
+header  .sub li{
+    background-color: brown;
+    color: white;
+    margin: 5px;
 }
 .sidebar button{
     background-color: transparent;
@@ -52,17 +70,15 @@ header button{
     align-items: center;
     list-style: none;
     gap: 27px;
-    padding-top: 4px;
+    padding-top: 20px;
 }
 .sidebar .side-nav ul li{
     text-decoration: underline 2px;
 }
-header button :hover.sidebar{
-    width: 200px;
-}
 .main{
     padding-top: 20px;
     padding-left: 30px;
+    width: 100%;
 }
 .main h5{
     margin-top: 168px;
@@ -75,6 +91,9 @@ footer{
     padding-top: 10px;
     position: absolute;
     bottom: 0;
+}
+#closeNav{
+    display: none;
 }
 @media (max-width:476px){
     header ul li{
