@@ -18,17 +18,19 @@ header .title{
     gap: 20px;
 }
 header .title i{
-    font-size: 30px;
+    font-size: 27px;
 }
 header  ul{
     display: flex;
     list-style: none;
     gap: 10px;
 }
-header ul li{
+header .nav ul li{
     background-color: white;
     padding: 5px;
     border-radius: 11px;
+    font-size: 12px;
+    text-align: center;
 }
 header button{
     background-color: transparent;
@@ -59,9 +61,10 @@ header .nav .sub li{
     background-color: rgb(57, 78, 86);
     color: white;
     position: relative;
-    width: 200px;
+    left: -200px;
     height:86vh;
-    display: none;
+    width: 200px;
+    transition: 0.5s ease-out;
 }
 .sidebar .side-nav ul{
     display: flex;
@@ -79,6 +82,9 @@ header .nav .sub li{
     padding-top: 20px;
     padding-left: 30px;
     width: 100%;
+    position: relative;
+    left: -100px;
+    transition: 0.5s ease-out;
 }
 .main h5{
     margin-top: 168px;
@@ -116,7 +122,7 @@ footer{
     width: 100%;
     height: 8vh;
     padding-top: 10px;
-    position: absolute;
+    position: fixed;
     bottom: 0;
 }
 #closeNav{
