@@ -3,166 +3,176 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
+    <title>Ultimate Portfolio</title>
     <style>
         :root {
-            --bg-dark: linear-gradient(135deg, #0a0a0a, #1b1b1b);
-            --bg-light: #f5f5f5;
-            --text-dark: #fff;
-            --text-light: #222;
             --accent: #4da6ff;
+            --neon: #00eaff;
         }
-        [data-theme="dark"] {
-            --bg: var(--bg-dark);
-            --text: var(--text-dark);
-        }
-        [data-theme="light"] {
-            --bg: var(--bg-light);
-            --text: var(--text-light);
-        }
-        * { transition: background 0.5s, color 0.5s; }
         body {
             margin: 0;
-            font-family: Poppins, Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            font-family: Poppins, Arial;
+            background: #0d0d0d;
+            color: #fff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        @keyframes fadeUp { 0% {opacity:0; transform:translateY(40px);} 100% {opacity:1; transform:translateY(0);} }
-        @keyframes slideIn { 0% {opacity:0; transform:translateX(-40px);} 100% {opacity:1; transform:translateX(0);} }
-        @keyframes float { 0% {transform:translateY(0);} 50% {transform:translateY(-15px);} 100% {transform:translateY(0);} }
+        /* --- NEON MODE --- */
+        .neon {
+            text-shadow: 0 0 5px var(--neon), 0 0 10px var(--neon), 0 0 20px var(--neon);
+        }
+        /* --- HEADER --- */
         header {
             background: rgba(0,0,0,0.6);
             padding: 20px;
+            position: sticky;
+            top: 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
             backdrop-filter: blur(10px);
-            animation: slideIn 0.8s ease;
+            animation: slideIn 1s ease;
+            z-index: 10;
         }
-        nav a { color: var(--text); margin: 0 15px; text-decoration: none; font-weight: 500; }
+        nav a {
+            margin: 0 15px; color: #fff; text-decoration: none; font-weight: 500;
+        }
         nav a:hover { color: var(--accent); }
-        .toggle-btn {
-            padding: 8px 12px;
-            background: var(--accent);
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            border: none;
-        }
+        /* --- HERO --- */
         .hero {
-            height: 75vh;
+            height: 90vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
-        .hero .float-img {
-            position: absolute;
-            width: 180px;
-            top: 10%; right: 10%; opacity: 0.2;
-            animation: float 5s infinite ease-in-out;
-        }
+        .float-img { position:absolute; width:180px; top:15%; right:10%; opacity:.18; animation:float 5s infinite; }
+        @keyframes float { 0%{transform:translateY(0);} 50%{transform:translateY(-15px);} 100%{transform:translateY(0);} }
+        /* --- PARALLAX --- */
         .parallax {
-            background-image: url('https://images.unsplash.com/photo-1527689368864-3a821dbccc34');
-            height: 300px;
-            background-attachment: fixed;
-            background-position: center;
-            background-size: cover;
+            background:url('https://images.unsplash.com/photo-1527689368864-3a821dbccc34');
+            height:300px; background-attachment:fixed; background-size:cover;
         }
-        .section { padding: 70px 20px; max-width: 1100px; margin: auto; opacity: 0; }
+        /* --- SECTIONS --- */
+        .section { padding:80px 20px; max-width:1100px; margin:auto; opacity:0; }
         .show { animation: fadeUp 1s ease forwards; }
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
+        @keyframes fadeUp { 0%{opacity:0; transform:translateY(40px);} 100%{opacity:1; transform:translateY(0);} }
+        /* --- PROJECT CARDS --- */
+        .projects { display:grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
         .card {
-            background: rgba(255,255,255,0.05);
-            border-radius: 15px;
-            padding: 25px;
-            transition: 0.3s;
-            overflow: hidden;
+            background:#111; padding:25px; border-radius:15px; transition:0.4s; perspective:800px;
         }
-        .card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.1); }
-        .card img {
-            width: 100%;
-            border-radius: 10px;
-            transition: transform 0.4s;
+        .card:hover { transform:translateY(-10px); background:#1a1a1a; }
+        .card img { width:100%; border-radius:10px; transition:transform .4s; }
+        .card:hover img { transform:scale(1.1); }
+        /* --- 3D Tilt Effect --- */
+        .tilt { transform-style:preserve-3d; }
+        /* --- PARTICLES CANVAS --- */
+        #particles { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
+        /* --- CUSTOM CURSOR --- */
+        #cursor {
+            position:fixed; width:20px; height:20px; border:2px solid var(--accent);
+            border-radius:50%; pointer-events:none; z-index:99999; transform:translate(-50%,-50%);
         }
-        .card:hover img { transform: scale(1.1); }
-        footer { text-align: center; padding: 20px; background: #000; margin-top: 40px; }
+        /* --- BACK TO TOP BUTTON --- */
+        #topBtn {
+            position:fixed; bottom:30px; left:30px; padding:10px 15px;
+            background:var(--accent); border:none; border-radius:10px; cursor:pointer;
+            display:none; z-index:999; color:#000;
+        }
+        /* --- FOOTER WAVES --- */
+        .wave {
+            width:100%; height:120px; background:url('https://i.imgur.com/ZA3nT8E.png'); background-size:1000px 120px;
+            animation:waveAnim 8s linear infinite;
+        }
+        @keyframes waveAnim { 0%{background-position-x:0;} 100%{background-position-x:1000px;} }
     </style>
 </head>
 <body>
+    <canvas id="particles"></canvas>
+    <div id="cursor"></div>
+
     <header>
-        <h1>Nama Anda</h1>
+        <h1 class="neon">Nama Anda</h1>
         <nav>
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
-        <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+        <button onclick="toggleMusic()" class="toggle-btn">Music</button>
     </header>
 
     <section class="hero">
-        <h2>Hi, I'm a Web Developer</h2>
-        <p>Membina website moden, smooth & penuh animasi.</p>
-        <img class="float-img" src="https://cdn-icons-png.flaticon.com/512/1829/1829586.png" />
+        <h2 class="neon">Hi, I'm a Web Developer</h2>
+        <p><span id="typing"></span></p>
+        <img class="float-img" src="https://cdn-icons-png.flaticon.com/512/1829/1829586.png">
     </section>
 
     <div class="parallax"></div>
 
-    <section id="about" class="section">
-        <h2>About Me</h2>
-        <p>Tulis penerangan ringkas tentang diri anda di sini.</p>
-    </section>
+    <section id="about" class="section"><h2>About Me</h2><p>Tulis penerangan anda di sini.</p></section>
 
     <section id="projects" class="section">
         <h2>My Projects</h2>
         <div class="projects">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" />
-                <h3>Project 1</h3>
-                <p>Deskripsi projek ringkas.</p>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" />
-                <h3>Project 2</h3>
-                <p>Deskripsi projek ringkas.</p>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" />
-                <h3>Project 3</h3>
-                <p>Deskripsi projek ringkas.</p>
-            </div>
+            <div class="card tilt"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"><h3>Project 1</h3></div>
+            <div class="card tilt"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475"><h3>Project 2</h3></div>
+            <div class="card tilt"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"><h3>Project 3</h3></div>
         </div>
     </section>
 
-    <section id="contact" class="section">
-        <h2>Contact</h2>
-        <p>Email: yourname@example.com</p>
-    </section>
+    <section id="contact" class="section"><h2>Contact</h2><p>Email: yourname@example.com</p></section>
 
-    <footer>
-        <p>© 2025 Your Name</p>
-    </footer>
+    <div class="wave"></div>
+    <footer><p>© 2025 Your Name</p></footer>
 
-    <script>
-        function toggleTheme() {
-            const html = document.documentElement;
-            html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
-        }
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
-        }, { threshold: 0.2 });
-        sections.forEach(sec => observer.observe(sec));
-    </script>
+    <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">Top</button>
+
+    <audio id="bgm" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2023/03/14/audio_7b9f1d8fc6.mp3?filename=future-ambient-141291.mp3">
+    </audio>
+
+<script>
+/* --- Typing Effect --- */
+let text = "Membina website moden, smooth, cinematic & profesional.";
+let i = 0;
+function typeEffect(){ if(i < text.length){ document.getElementById('typing').innerHTML += text.charAt(i); i++; setTimeout(typeEffect,40);} }
+window.onload = () => typeEffect();
+
+/* --- Scroll Reveal --- */
+const sections=document.querySelectorAll('.section');
+const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('show');})},{threshold:.2});
+sections.forEach(s=>obs.observe(s));
+
+/* --- Custom Cursor --- */
+const cursor=document.getElementById('cursor');
+document.addEventListener('mousemove',e=>{cursor.style.left=e.pageX+'px'; cursor.style.top=e.pageY+'px';});
+
+/* --- Back To Top Button --- */
+const topBtn=document.getElementById('topBtn');
+window.addEventListener('scroll',()=>{ if(window.scrollY>400) topBtn.style.display='block'; else topBtn.style.display='none'; });
+
+/* --- Background Music --- */
+function toggleMusic(){ const m=document.getElementById('bgm'); if(m.paused)m.play(); else m.pause(); }
+
+/* --- Particle Background --- */
+const c=document.getElementById('particles'); const ctx=c.getContext('2d'); c.width=innerWidth; c.height=innerHeight;
+let particles=[]; for(let i=0;i<90;i++) particles.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*3+1,dx:(Math.random()-.5),dy:(Math.random()-.5)});
+function animate(){ ctx.clearRect(0,0,c.width,c.height); particles.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='#4da6ff44';ctx.fill();p.x+=p.dx;p.y+=p.dy;if(p.x<0||p.x>c.width)p.dx*=-1;if(p.y<0||p.y>c.height)p.dy*=-1;}); requestAnimationFrame(animate); }
+animate();
+
+/* --- 3D Tilt Effect --- */
+document.querySelectorAll('.tilt').forEach(card=>{
+    card.addEventListener('mousemove', e=>{
+        const rect=card.getBoundingClientRect();
+        let x=(e.clientX-rect.left)/rect.width - .5;
+        let y=(e.clientY-rect.top)/rect.height - .5;
+        card.style.transform=`rotateX(${y*10}deg) rotateY(${x*10}deg)`;
+    });
+    card.addEventListener('mouseleave',()=>{card.style.transform='rotateX(0) rotateY(0)';});
+});
+</script>
 </body>
 </html>
