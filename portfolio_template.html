@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <style>
+        :root {
+            --bg-dark: linear-gradient(135deg, #0a0a0a, #1b1b1b);
+            --bg-light: #f5f5f5;
+            --text-dark: #fff;
+            --text-light: #222;
+            --accent: #4da6ff;
+        }
+        [data-theme="dark"] {
+            --bg: var(--bg-dark);
+            --text: var(--text-dark);
+        }
+        [data-theme="light"] {
+            --bg: var(--bg-light);
+            --text: var(--text-light);
+        }
+        * { transition: background 0.5s, color 0.5s; }
+        body {
+            margin: 0;
+            font-family: Poppins, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+        @keyframes fadeUp { 0% {opacity:0; transform:translateY(40px);} 100% {opacity:1; transform:translateY(0);} }
+        @keyframes slideIn { 0% {opacity:0; transform:translateX(-40px);} 100% {opacity:1; transform:translateX(0);} }
+        @keyframes float { 0% {transform:translateY(0);} 50% {transform:translateY(-15px);} 100% {transform:translateY(0);} }
+        header {
+            background: rgba(0,0,0,0.6);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            animation: slideIn 0.8s ease;
+        }
+        nav a { color: var(--text); margin: 0 15px; text-decoration: none; font-weight: 500; }
+        nav a:hover { color: var(--accent); }
+        .toggle-btn {
+            padding: 8px 12px;
+            background: var(--accent);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            border: none;
+        }
+        .hero {
+            height: 75vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero .float-img {
+            position: absolute;
+            width: 180px;
+            top: 10%; right: 10%; opacity: 0.2;
+            animation: float 5s infinite ease-in-out;
+        }
+        .parallax {
+            background-image: url('https://images.unsplash.com/photo-1527689368864-3a821dbccc34');
+            height: 300px;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+        .section { padding: 70px 20px; max-width: 1100px; margin: auto; opacity: 0; }
+        .show { animation: fadeUp 1s ease forwards; }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            transition: 0.3s;
+            overflow: hidden;
+        }
+        .card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.1); }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.4s;
+        }
+        .card:hover img { transform: scale(1.1); }
+        footer { text-align: center; padding: 20px; background: #000; margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Nama Anda</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+    </header>
+
+    <section class="hero">
+        <h2>Hi, I'm a Web Developer</h2>
+        <p>Membina website moden, smooth & penuh animasi.</p>
+        <img class="float-img" src="https://cdn-icons-png.flaticon.com/512/1829/1829586.png" />
+    </section>
+
+    <div class="parallax"></div>
+
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>Tulis penerangan ringkas tentang diri anda di sini.</p>
+    </section>
+
+    <section id="projects" class="section">
+        <h2>My Projects</h2>
+        <div class="projects">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" />
+                <h3>Project 1</h3>
+                <p>Deskripsi projek ringkas.</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" />
+                <h3>Project 2</h3>
+                <p>Deskripsi projek ringkas.</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" />
+                <h3>Project 3</h3>
+                <p>Deskripsi projek ringkas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <p>Email: yourname@example.com</p>
+    </section>
+
+    <footer>
+        <p>© 2025 Your Name</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
+        }
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
+        }, { threshold: 0.2 });
+        sections.forEach(sec => observer.observe(sec));
+    </script>
+</body>
+</html>
